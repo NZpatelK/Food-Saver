@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/pendingExpireFragment"
+        android:icon="@drawable/baseline_date_range_24"
+        android:title="Pending Expire" />
+    <item
+        android:id="@+id/inventory"
+        android:icon="@drawable/baseline_inventory_24"
+        android:title="Inventory" />
+</menu>

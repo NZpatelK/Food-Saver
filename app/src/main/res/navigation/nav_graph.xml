@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/pendingExpireFragment">
+
+    <fragment
+        android:id="@+id/pendingExpireFragment"
+        android:name="com.example.foodsaver.PendingExpireFragment"
+        android:label="fragment_pending_expire"
+        tools:layout="@layout/fragment_pending_expire" />
+    <fragment
+        android:id="@+id/inventory"
+        android:name="com.example.foodsaver.Inventory"
+        android:label="fragment_inventory"
+        tools:layout="@layout/fragment_inventory" />
+</navigation>
