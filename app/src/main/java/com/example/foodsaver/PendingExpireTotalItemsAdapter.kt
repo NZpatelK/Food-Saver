@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -31,6 +32,10 @@ class PendingExpireTotalItemsAdapter (private val pendingExpireTotalItemsList: A
         holder.totalItems.text = pendingExpireTotalItemsList[position].totalItems.toString()
 
         holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context, R.anim.scale_up))
+
+        holder.cardView.setOnClickListener {
+            Toast.makeText(holder.itemView.context, "numer: $position", Toast.LENGTH_SHORT).show()
+        }
 
     }
 }
