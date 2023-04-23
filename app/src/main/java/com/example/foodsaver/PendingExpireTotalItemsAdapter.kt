@@ -1,5 +1,6 @@
 package com.example.foodsaver
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +36,12 @@ class PendingExpireTotalItemsAdapter (private val pendingExpireTotalItemsList: A
 
         holder.cardView.setOnClickListener {
             Toast.makeText(holder.itemView.context, "numer: $position", Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(holder.itemView.context, ListOfItemsActivity::class.java)
+            intent.putExtra("productTitle", pendingExpireTotalItemsList[position].date)
+            intent.putExtra("productNum", pendingExpireTotalItemsList[position].totalItems.toString())
+
+            holder.itemView.context.startActivity(intent)
         }
 
     }

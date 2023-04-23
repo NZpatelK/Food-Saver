@@ -12,6 +12,9 @@
         android:theme="@style/Theme.FoodSaver"
         tools:targetApi="31">
         <activity
+            android:name=".ListOfItemsActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddItemActivity"
             android:exported="false" />
         <activity
