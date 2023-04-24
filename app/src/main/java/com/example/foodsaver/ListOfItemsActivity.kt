@@ -12,10 +12,10 @@ class ListOfItemsActivity : AppCompatActivity() {
         val itemName = findViewById<TextView>(R.id.itemName)
         val totalItems = findViewById<TextView>(R.id.totalStock)
 
-        val name = intent.getStringExtra("productTitle")
-        val total = intent.getStringExtra("productNum")
+        val ListOfProducts = intent.getSerializableExtra("productsList") as List<Item>
 
-        itemName.text = name
-        totalItems.text = total
+        itemName.text = ListOfProducts?.get(1)?.productName
+
+
     }
 }

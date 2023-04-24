@@ -9,8 +9,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import java.io.Serializable
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
-class PendingExpireTotalItemsAdapter (private val pendingExpireTotalItemsList: ArrayList<PendingExpireTotalItems>) : RecyclerView.Adapter<PendingExpireTotalItemsAdapter.PendingExpireTotalItemsHolder> () {
+class PendingExpireTotalItemsAdapter(private val pendingExpireTotalItemsList: Map<LocalDate, List<Item>>) : RecyclerView.Adapter<PendingExpireTotalItemsAdapter.PendingExpireTotalItemsHolder> () {
     class PendingExpireTotalItemsHolder(view: View) : RecyclerView.ViewHolder(view) {
         val outputDate: TextView = view.findViewById(R.id.outputDate)
         val totalItems: TextView = view.findViewById((R.id.totalItems))
@@ -29,17 +32,21 @@ class PendingExpireTotalItemsAdapter (private val pendingExpireTotalItemsList: A
     override fun getItemCount(): Int = pendingExpireTotalItemsList.size
 
     override fun onBindViewHolder(holder: PendingExpireTotalItemsHolder, position: Int) {
-        holder.outputDate.text = pendingExpireTotalItemsList[position].date
-        holder.totalItems.text = pendingExpireTotalItemsList[position].totalItems.toString()
+
+        val key = pendingExpireTotalItemsList.keys.toTypedArray()[position]
+        val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+
+        holder.outputDate.text = key.format(formatter)
+        holder.totalItems.text = pendingExpireTotalItemsList[key]?.size.toString()
 
         holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context, R.anim.scale_up))
 
         holder.cardView.setOnClickListener {
-            Toast.makeText(holder.itemView.context, "numer: $position", Toast.LENGTH_SHORT).show()
+            Toast.makeText(holder.itemView.context, "numer:", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(holder.itemView.context, ListOfItemsActivity::class.java)
-            intent.putExtra("productTitle", pendingExpireTotalItemsList[position].date)
-            intent.putExtra("productNum", pendingExpireTotalItemsList[position].totalItems.toString())
+
+            intent.putExtra("productsList", pendingExpireTotalItemsList[key] as Serializable)
 
             holder.itemView.context.startActivity(intent)
         }

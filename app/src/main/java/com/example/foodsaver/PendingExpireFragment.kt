@@ -10,9 +10,6 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -39,26 +36,8 @@ class PendingExpireFragment : Fragment() {
             startActivity(intent, option.toBundle())
         }
 
-        //This temp data to display the list of pending expire data with total items.
-
-        val dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.getDefault())
-
-        val products = arrayListOf<PendingExpireTotalItems>(
-            PendingExpireTotalItems(LocalDate.now().minusDays(1).format(dateFormat), 45),
-            PendingExpireTotalItems(LocalDate.now().minusDays(2).format(dateFormat), 65),
-            PendingExpireTotalItems(LocalDate.now().minusDays(3).format(dateFormat), 123),
-            PendingExpireTotalItems(LocalDate.now().minusDays(4).format(dateFormat),546132),
-            PendingExpireTotalItems(LocalDate.now().minusDays(5).format(dateFormat),4566),
-            PendingExpireTotalItems(LocalDate.now().minusDays(6).format(dateFormat), 456),
-            PendingExpireTotalItems(LocalDate.now().minusDays(1).format(dateFormat), 465),
-            PendingExpireTotalItems(LocalDate.now().minusDays(1).format(dateFormat), 456),
-            PendingExpireTotalItems(LocalDate.now().minusDays(1).format(dateFormat), 123),
-            PendingExpireTotalItems(LocalDate.now().minusDays(1).format(dateFormat), 1345),
-            PendingExpireTotalItems(LocalDate.now().minusDays(1).format(dateFormat), 132),
-            PendingExpireTotalItems(LocalDate.now().minusDays(1).format(dateFormat), 123),
-            PendingExpireTotalItems(LocalDate.now().minusDays(1).format(dateFormat), 456),
-            PendingExpireTotalItems(LocalDate.now().minusDays(1).format(dateFormat), 132)
-        )
+        val jsonDataManager = JsonDataManager(requireContext())
+        jsonDataManager.initDateHolder()
 
         //This is output the display of list expire date with total items.
 
@@ -66,7 +45,7 @@ class PendingExpireFragment : Fragment() {
         prodRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
-            adapter = PendingExpireTotalItemsAdapter(products)
+            adapter = PendingExpireTotalItemsAdapter(ItemDataHolder.groupOfSameExpireDate)
         }
 
 
