@@ -1,5 +1,6 @@
 package com.example.foodsaver
 
+import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.animation.AnimationUtils
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import java.io.Serializable
 import java.time.LocalDate
@@ -42,13 +44,14 @@ class PendingExpireTotalItemsAdapter(private val pendingExpireTotalItemsList: Ma
         holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context, R.anim.scale_up))
 
         holder.cardView.setOnClickListener {
-            Toast.makeText(holder.itemView.context, "numer:", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(holder.itemView.context, ListOfItemsActivity::class.java)
 
+            val option = ActivityOptionsCompat.makeSceneTransitionAnimation(holder.itemView.context as Activity,  holder.cardView,  holder.cardView.transitionName )
+
             intent.putExtra("productsList", pendingExpireTotalItemsList[key] as Serializable)
 
-            holder.itemView.context.startActivity(intent)
+            holder.itemView.context.startActivity(intent, option.toBundle())
         }
 
     }
