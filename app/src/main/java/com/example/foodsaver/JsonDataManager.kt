@@ -22,7 +22,6 @@ class JsonDataManager (private val context: Context) {
 
         ItemDataHolder.groupOfSameExpireDate.forEach { (date, items) ->
             val formattedDate = date.toString()
-            println("Date ${formattedDate}: ${items.size} items")
         }
     }
 }
