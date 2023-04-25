@@ -6,10 +6,17 @@ import android.view.MenuItem
 import android.view.Window
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.color.MaterialColors
+import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.transition.platform.MaterialArcMotion
 import com.google.android.material.transition.platform.MaterialContainerTransform
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class AddItemActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +35,33 @@ class AddItemActivity : AppCompatActivity() {
         window.sharedElementEnterTransition = buildTransitions()
         window.sharedElementExitTransition = buildTransitions()
         window.sharedElementReenterTransition = buildTransitions()
+
+        val button = findViewById<MaterialButton>(R.id.date_picker_actions)
+        val submit = findViewById<MaterialButton>(R.id.submit)
+        val input = findViewById<TextInputEditText>(R.id.inputValue)
+        var date = ""
+
+
+        button.setOnClickListener {
+            val materialDatePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Select Date")
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .build()
+
+            materialDatePicker.addOnPositiveButtonClickListener { selection ->
+                date = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(selection))
+            }
+            materialDatePicker.show(supportFragmentManager, "tag")
+        }
+
+        submit.setOnClickListener{
+            val newItem = Item(UUID.randomUUID().toString(), input.text.toString(),"http://dummyimage.com/100x100.png/ff4444/ffffff", date )
+            ItemDataHolder.insertItem(LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy")), newItem)
+
+            finish()
+
+
+        }
 
         super.onCreate(savedInstanceState)
     }

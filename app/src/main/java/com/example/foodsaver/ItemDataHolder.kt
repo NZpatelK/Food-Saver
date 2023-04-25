@@ -16,4 +16,13 @@ object ItemDataHolder {
             }
         }
     }
+
+    fun insertItem(date: LocalDate, item: Item) {
+        val itemsOnDate = groupOfSameExpireDate[date]?.toMutableList() ?: mutableListOf() // Get the list of items for the given date, or create a new empty list if it doesn't exist
+        itemsOnDate.add(item) // Add the new item to the list
+        groupOfSameExpireDate = groupOfSameExpireDate + (date to itemsOnDate) // Update the map with the new list of items for the date
+        groupOfSameExpireDate = groupOfSameExpireDate.toSortedMap(Comparator.naturalOrder())
+
+    }
+
 }
