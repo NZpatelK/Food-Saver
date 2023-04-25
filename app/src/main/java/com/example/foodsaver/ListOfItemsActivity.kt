@@ -10,6 +10,7 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.transition.platform.MaterialArcMotion
@@ -26,6 +27,12 @@ class ListOfItemsActivity : AppCompatActivity() {
         window.sharedElementEnterTransition = buildTransitions()
         window.sharedElementExitTransition = buildTransitions()
         window.sharedElementReenterTransition = buildTransitions()
+
+        val toolbar = findViewById<MaterialToolbar>(R.id.Toolbar)
+        setSupportActionBar(toolbar)
+
+        supportActionBar?.title = "List of the Items"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         super.onCreate(savedInstanceState)
 

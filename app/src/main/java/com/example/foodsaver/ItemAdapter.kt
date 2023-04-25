@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -14,7 +15,7 @@ class ItemAdapter (private var itemList: List<Item>) : RecyclerView.Adapter<Item
 
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ItemName: TextView = view.findViewById(R.id.itemName)
-
+        val delete: ImageView = view.findViewById(R.id.delete)
         val cardView: CardView = view.findViewById(R.id.itemCardView)
     }
 
@@ -33,7 +34,7 @@ class ItemAdapter (private var itemList: List<Item>) : RecyclerView.Adapter<Item
 
         holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context, R.anim.scale_up))
 
-        holder.cardView.setOnClickListener {
+        holder.delete.setOnClickListener {
             val jsonDataManager = JsonDataManager(holder.itemView.context)
             val formatter = DateTimeFormatter.ofPattern("d/MM/yyyy")
 
