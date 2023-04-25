@@ -7,8 +7,10 @@ import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
-class ItemAdapter (private val itemList: List<Item>) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(){
+class ItemAdapter (private var itemList: List<Item>) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(){
 
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ItemName: TextView = view.findViewById(R.id.itemName)
@@ -26,9 +28,24 @@ class ItemAdapter (private val itemList: List<Item>) : RecyclerView.Adapter<Item
     override fun getItemCount(): Int = itemList.size
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val name = itemList.get(position)
+        val name = itemList[position]
         holder.ItemName.text = name.productName
 
         holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context, R.anim.scale_up))
+
+        holder.cardView.setOnClickListener {
+            val jsonDataManager = JsonDataManager(holder.itemView.context)
+            val formatter = DateTimeFormatter.ofPattern("d/MM/yyyy")
+
+            val key = LocalDate.parse(name.expireDate, formatter) // key to update
+            jsonDataManager.deleteTheItem(position, this, key)
+
+            itemList = ItemDataHolder.groupOfSameExpireDate[key]!!
+
+            for (i in position until itemList.size) {
+                notifyItemChanged(i)
+            }
+
+        }
     }
 }

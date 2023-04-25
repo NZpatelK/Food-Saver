@@ -24,4 +24,10 @@ class JsonDataManager (private val context: Context) {
             val formattedDate = date.toString()
         }
     }
+
+    fun deleteTheItem(position: Int, adapter: ItemAdapter, localDate: LocalDate) {
+        ItemDataHolder.deleteItemByIndex(localDate, position)
+        println(position)
+        adapter.notifyItemRemoved(position)
+    }
 }

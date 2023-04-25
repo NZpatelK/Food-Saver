@@ -15,7 +15,7 @@ import java.io.Serializable
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-class PendingExpireTotalItemsAdapter(private val pendingExpireTotalItemsList: Map<LocalDate, List<Item>>) : RecyclerView.Adapter<PendingExpireTotalItemsAdapter.PendingExpireTotalItemsHolder> () {
+class PendingExpireTotalItemsAdapter(private var pendingExpireTotalItemsList: Map<LocalDate, List<Item>>) : RecyclerView.Adapter<PendingExpireTotalItemsAdapter.PendingExpireTotalItemsHolder> () {
     class PendingExpireTotalItemsHolder(view: View) : RecyclerView.ViewHolder(view) {
         val outputDate: TextView = view.findViewById(R.id.outputDate)
         val totalItems: TextView = view.findViewById((R.id.totalItems))
@@ -29,6 +29,11 @@ class PendingExpireTotalItemsAdapter(private val pendingExpireTotalItemsList: Ma
 
         return  PendingExpireTotalItemsHolder(view)
 
+    }
+
+    fun setPendingExpireTotalItems(newList: Map<LocalDate, List<Item>>) {
+        pendingExpireTotalItemsList = newList
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int = pendingExpireTotalItemsList.size

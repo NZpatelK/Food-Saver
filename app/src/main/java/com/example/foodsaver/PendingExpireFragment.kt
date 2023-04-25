@@ -20,6 +20,8 @@ import java.util.*
  */
 class PendingExpireFragment : Fragment() {
 
+    private lateinit var adapter: PendingExpireTotalItemsAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,6 +48,8 @@ class PendingExpireFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
             adapter = PendingExpireTotalItemsAdapter(ItemDataHolder.groupOfSameExpireDate)
+            this@PendingExpireFragment.adapter = adapter as PendingExpireTotalItemsAdapter
+
         }
 
 
@@ -83,6 +87,11 @@ class PendingExpireFragment : Fragment() {
         })
 
         return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        adapter.setPendingExpireTotalItems(ItemDataHolder.groupOfSameExpireDate)
     }
 
 }
