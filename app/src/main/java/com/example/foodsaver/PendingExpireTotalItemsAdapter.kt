@@ -46,6 +46,18 @@ class PendingExpireTotalItemsAdapter(private var pendingExpireTotalItemsList: Ma
         holder.outputDate.text = key.format(formatter)
         holder.totalItems.text = pendingExpireTotalItemsList[key]?.size.toString()
 
+        when (position) {
+            0 -> {
+                holder.cardView.setBackgroundResource(R.drawable.alert_rounded_cardview)
+            }
+            1 -> {
+                holder.cardView.setBackgroundResource(R.drawable.low_alert_rounded_cardview)
+            }
+            else -> {
+                holder.cardView.setBackgroundResource(R.drawable.rounded_cardview)
+            }
+        }
+
         holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context, R.anim.scale_up))
 
         holder.cardView.setOnClickListener {

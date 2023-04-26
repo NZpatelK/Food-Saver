@@ -3,6 +3,7 @@ package com.example.foodsaver
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.view.Window
 import android.widget.TextView
@@ -61,6 +62,16 @@ class ListOfItemsActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun scrollListener(prodRecyclerView: RecyclerView, fab: ExtendedFloatingActionButton) {
