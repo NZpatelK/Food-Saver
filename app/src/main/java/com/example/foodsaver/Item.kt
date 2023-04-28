@@ -3,6 +3,9 @@ package com.example.foodsaver
 import android.os.Parcel
 import android.os.Parcelable
 
+/**
+ * This is Item Modal/Entity.
+ */
 data class Item(
     val id: String,
     val productName: String,
