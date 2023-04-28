@@ -2,6 +2,10 @@ package com.example.foodsaver
 
 import java.time.LocalDate
 
+/**
+ * This is data holder object is to storage the data in the data holder.
+ * It is like database and this is temporary location to storage. In the future will move to cloud database.
+ */
 object ItemDataHolder {
     var groupOfSameExpireDate: Map<LocalDate, List<Item>> = emptyMap()
 
