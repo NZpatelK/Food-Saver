@@ -14,9 +14,7 @@ import java.util.*
 
 
 /**
- * A simple [Fragment] subclass.
- * Use the [PendingExpireFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * This is page is show list of the expire date with total of items of the same date expire.
  */
 class PendingExpireFragment : Fragment() {
 
@@ -42,7 +40,6 @@ class PendingExpireFragment : Fragment() {
         jsonDataManager.initDateHolder()
 
         //This is output the display of list expire date with total items.
-
         val prodRecyclerView = view.findViewById<RecyclerView>(R.id.PendingExpireTotalItemRecyclerView)
         prodRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
@@ -89,6 +86,7 @@ class PendingExpireFragment : Fragment() {
         return view
     }
 
+    //This is update the display with the latest data. 
     override fun onResume() {
         super.onResume()
         adapter.setPendingExpireTotalItems(ItemDataHolder.groupOfSameExpireDate)
