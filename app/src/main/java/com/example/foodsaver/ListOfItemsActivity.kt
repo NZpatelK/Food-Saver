@@ -18,6 +18,10 @@ import com.google.android.material.transition.platform.MaterialArcMotion
 import com.google.android.material.transition.platform.MaterialContainerTransform
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 
+
+/**
+ * This activity page is to display list of items that has same expire date.
+ */
 class ListOfItemsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         window.requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS)
@@ -64,6 +68,7 @@ class ListOfItemsActivity : AppCompatActivity() {
 
     }
 
+    //THis is back button function to return the previous page
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
@@ -74,6 +79,7 @@ class ListOfItemsActivity : AppCompatActivity() {
         }
     }
 
+    // This scroll listener function to control the scroll and floating action Button
     private fun scrollListener(prodRecyclerView: RecyclerView, fab: ExtendedFloatingActionButton) {
 
         prodRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -99,7 +105,7 @@ class ListOfItemsActivity : AppCompatActivity() {
                     fab.visibility = View.VISIBLE
                 }
 
-                // At the top
+                // At the Bottom
                 if (!recyclerView.canScrollVertically(1)) {
                     fab.visibility = View.GONE
                 }
@@ -108,6 +114,7 @@ class ListOfItemsActivity : AppCompatActivity() {
 
     }
 
+    //This is animation and transition function,
     private fun buildTransitions(): MaterialContainerTransform {
         return MaterialContainerTransform().apply {
             addTarget(R.id.list_item_container)
