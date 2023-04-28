@@ -5,6 +5,10 @@ import com.google.gson.Gson
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
+/**
+ * This class is to setup the access the data from the local json file to fetch the data
+ * and save into data holder.
+ */
 class JsonDataManager (private val context: Context) {
 
     fun initDateHolder() {

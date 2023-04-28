@@ -9,6 +9,7 @@ import java.time.LocalDate
 object ItemDataHolder {
     var groupOfSameExpireDate: Map<LocalDate, List<Item>> = emptyMap()
 
+    //This is delete function to delete the specific item from the list.
     fun deleteItemByIndex(date: LocalDate, index: Int) {
         val itemsOnDate = groupOfSameExpireDate[date]?.toMutableList() ?: return // Get the list of items for the given date, if it exists
         if (index in itemsOnDate.indices) {
@@ -21,6 +22,7 @@ object ItemDataHolder {
         }
     }
 
+    //This is insert item to add a new item into the list.
     fun insertItem(date: LocalDate, item: Item) {
         val itemsOnDate = groupOfSameExpireDate[date]?.toMutableList() ?: mutableListOf() // Get the list of items for the given date, or create a new empty list if it doesn't exist
         itemsOnDate.add(item) // Add the new item to the list
