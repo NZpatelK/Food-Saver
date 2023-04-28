@@ -7,6 +7,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+/**
+ * This main activity page to start up the page.
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
