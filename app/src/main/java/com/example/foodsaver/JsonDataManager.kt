@@ -21,14 +21,14 @@ class JsonDataManager (private val context: Context) {
         val gson = Gson()
         val itemStorage = gson.fromJson(jsonString, Array<Item>::class.java).toList()
 
-        ItemDataHolder.groupOfSameExpireDate = itemStorage!!.sortedBy {
+        ItemDataHolder.groupOfSameExpireDate = itemStorage.sortedBy {
             LocalDate.parse(it.expireDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
         }.groupBy {
             LocalDate.parse(it.expireDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
         }
 
-        ItemDataHolder.groupOfSameExpireDate.forEach { (date, items) ->
-            val formattedDate = date.toString()
+        ItemDataHolder.groupOfSameExpireDate.forEach { (date, _) ->
+            date.toString()
         }
     }
 

@@ -10,7 +10,7 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import java.util.*
+
 
 
 /**
@@ -86,7 +86,7 @@ class PendingExpireFragment : Fragment() {
         return view
     }
 
-    //This is update the display with the latest data. 
+    //This is update the display with the latest data.
     override fun onResume() {
         super.onResume()
         adapter.setPendingExpireTotalItems(ItemDataHolder.groupOfSameExpireDate)

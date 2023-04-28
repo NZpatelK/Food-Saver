@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter
 class ItemAdapter (private var itemList: List<Item>) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(){
 
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val ItemName: TextView = view.findViewById(R.id.itemName)
+        val itemName: TextView = view.findViewById(R.id.itemName)
         val delete: ImageView = view.findViewById(R.id.delete)
         val cardView: CardView = view.findViewById(R.id.itemCardView)
     }
@@ -33,7 +33,7 @@ class ItemAdapter (private var itemList: List<Item>) : RecyclerView.Adapter<Item
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val name = itemList[position]
-        holder.ItemName.text = name.productName
+        holder.itemName.text = name.productName
 
         holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context, R.anim.scale_up))
 

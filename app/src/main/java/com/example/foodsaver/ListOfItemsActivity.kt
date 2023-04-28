@@ -1,12 +1,11 @@
 package com.example.foodsaver
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.view.Window
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,7 +40,7 @@ class ListOfItemsActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
 
-        val ListOfProducts = intent.getSerializableExtra("productsList") as List<Item>
+        @Suppress("DEPRECATION") val listOfProducts = intent.getSerializableExtra("productsList") as List<*>
 
         val fab = findViewById<ExtendedFloatingActionButton>(R.id.floating_action)
 
@@ -51,27 +50,25 @@ class ListOfItemsActivity : AppCompatActivity() {
             startActivity(intent, option.toBundle())
         }
 
-        if (ListOfProducts != null) {
-            val prodRecyclerView = findViewById<RecyclerView>(R.id.itemRecyclerView)
-            prodRecyclerView.apply {
-                layoutManager = LinearLayoutManager(context)
-                setHasFixedSize(true)
-                adapter = ItemAdapter(ListOfProducts)
-            }
-
-            scrollListener(prodRecyclerView, fab)
-
-        } else {
-            // Handle the case when name is null or not of type List<Items>
+        val prodRecyclerView = findViewById<RecyclerView>(R.id.itemRecyclerView)
+        prodRecyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            @Suppress("UNCHECKED_CAST")
+            adapter = ItemAdapter(listOfProducts as List<Item>)
         }
+
+        scrollListener(prodRecyclerView, fab)
 
 
     }
 
     //THis is back button function to return the previous page
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
         return when (item.itemId) {
             android.R.id.home -> {
+                @Suppress("DEPRECATION")
                 onBackPressed()
                 true
             }
