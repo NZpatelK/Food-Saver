@@ -22,6 +22,8 @@ private const val ARG_PARAM2 = "param2"
  * It is try to save you from waste. als you will able view same product but different expire date and help you select right product which is closeset to expire date
  * then use that first before next one.
  *
+ *
+ * I haven't create inventory in this class but in the future will plan to come back and add a new feature.
  */
 class Inventory : Fragment() {
     // TODO: Rename and change types of parameters
