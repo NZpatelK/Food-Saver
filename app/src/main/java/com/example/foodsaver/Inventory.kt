@@ -16,6 +16,13 @@ private const val ARG_PARAM2 = "param2"
  * Use the [Inventory.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+/**
+ * This class is Inventory to able to manage short life food stock to make sure the stock do not waste when it expire.
+ * It is try to save you from waste. als you will able view same product but different expire date and help you select right product which is closeset to expire date
+ * then use that first before next one.
+ *
+ */
 class Inventory : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
