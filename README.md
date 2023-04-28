@@ -10,4 +10,4 @@ Not only does this app save you money by reducing waste, but it is also an eco-f
 
 While the app is still in the development phase, I am excited to showcase its current features 💡. As I continue to work on this project, I am confident that I will bring even more useful and user-friendly features to the table.
 
-In conclusion, the Food Saver app is the perfect solution to reducing food waste, saving money, and promoting a sustainable planet. Thank you for your interest in my project,
+In conclusion, the Food Saver app is the perfect solution to reducing food waste, saving money, and promoting a sustainable planet. Thank you for your interest in my project.
