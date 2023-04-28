@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
+/**
+ * This Adapter class to control the view of list of item page. 
+ */
 class ItemAdapter (private var itemList: List<Item>) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(){
 
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -36,7 +39,7 @@ class ItemAdapter (private var itemList: List<Item>) : RecyclerView.Adapter<Item
 
         holder.delete.setOnClickListener {
             val jsonDataManager = JsonDataManager(holder.itemView.context)
-            val formatter = DateTimeFormatter.ofPattern("d/MM/yyyy")
+            val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
 
             val key = LocalDate.parse(name.expireDate, formatter) // key to update
             jsonDataManager.deleteTheItem(position, this, key)
