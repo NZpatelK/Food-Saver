@@ -11,3 +11,7 @@ Not only does this app save you money by reducing waste, but it is also an eco-f
 While the app is still in the development phase, I am excited to showcase its current features 💡. As I continue to work on this project, I am confident that I will bring even more useful and user-friendly features to the table.
 
 In conclusion, the Food Saver app is the perfect solution to reducing food waste, saving money, and promoting a sustainable planet. Thank you for your interest in my project.
+
+#### Click on the video icon to view the demonstration video of my application. 👀
+[<img src='https://img.icons8.com/external-xnimrodx-lineal-gradient-xnimrodx/512/external-video-news-xnimrodx-lineal-gradient-xnimrodx.png' width='100'>](https://www.linkedin.com/posts/karan-h-patel_foodsaver-foodmanagement-reducefoodwaste-activity-7056832458998087680-yeZ-?utm_source=share&utm_medium=member_desktop)
+
