@@ -8,7 +8,7 @@ import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /**
- * This main activity page to start up the page.
+ * This is the main activity page to start off the page.
  */
 class MainActivity : AppCompatActivity() {
 

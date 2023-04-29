@@ -14,12 +14,9 @@ private const val ARG_PARAM2 = "param2"
 
 
 /**
- * This class is Inventory to able to manage short life food stock to make sure the stock do not waste when it expire.
- * It is try to save you from waste. als you will able view same product but different expire date and help you select right product which is closeset to expire date
- * then use that first before next one.
- *
- *
- * I haven't create inventory in this class but in the future will plan to come back and add a new feature.
+ * This class is meant for inventory management of short-life food stock to ensure that it does not go to waste when it expires.
+ * Its purpose is to save you from waste. You will be able to view the same product but with different expiry dates and help you select the right product that is closest to the expiry date and use it first before the next one.
+ * I haven't created an inventory in this class, but in the future, I plan to come back and add a new feature.
  */
 class Inventory : Fragment() {
     // TODO: Rename and change types of parameters

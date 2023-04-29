@@ -20,7 +20,7 @@ import java.util.*
 
 
 /**
- * This class is Add new item page for user able to add a new item to add the list.
+ * This class is for the 'Add New Item' page, where users are able to add a new item to the list.
  */
 class AddItemActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +45,7 @@ class AddItemActivity : AppCompatActivity() {
         val input = findViewById<TextInputEditText>(R.id.inputValue)
         var date = ""
 
-        //This is date picker function and this user can click the date picker to open the calendar to select the pending expire date.
+        //This is a date picker function, and the user can click on the date picker to open the calendar and select the pending expiration date.
         button.setOnClickListener {
             val materialDatePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Select Date")
@@ -58,7 +58,7 @@ class AddItemActivity : AppCompatActivity() {
             materialDatePicker.show(supportFragmentManager, "tag")
         }
 
-        //This is submit function when user complete the add new item form then click submit to save a new item and add into the list.
+        //This is the submit function. When the user completes the "add new item" form and clicks on "submit", it will save the new item and add it to the list.
         submit.setOnClickListener{
             val newItem = Item(UUID.randomUUID().toString(), input.text.toString(),"http://dummyimage.com/100x100.png/ff4444/ffffff", date )
             ItemDataHolder.insertItem(LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy")), newItem)
@@ -71,7 +71,7 @@ class AddItemActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
     }
 
-    //This function is for back button to able to return previous page.
+    //This function is used for the back button to be able to return to the previous page.
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
@@ -83,7 +83,7 @@ class AddItemActivity : AppCompatActivity() {
         }
     }
 
-    //This is animation function to animation when you open this page and you see list of item will pop up in animation method.
+    //This animation function animates the list of items that appear when you open this page using animation methods.
     private fun buildTransitions(): MaterialContainerTransform {
         return MaterialContainerTransform().apply {
             addTarget(R.id.container)

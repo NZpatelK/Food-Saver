@@ -19,7 +19,7 @@ import com.google.android.material.transition.platform.MaterialContainerTransfor
 
 
 /**
- * This activity page is to display list of items that has same expire date.
+ * This activity page is designed to display a list of items that have the same expiration date.
  */
 class ListOfItemsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +44,8 @@ class ListOfItemsActivity : AppCompatActivity() {
 
         val fab = findViewById<ExtendedFloatingActionButton>(R.id.floating_action)
 
+        // The click listener for this floating action button will navigate
+        // the user to the page for adding a new item when the button is clicked.
         fab.setOnClickListener {
             val intent = Intent(this, AddItemActivity::class.java)
             val option = ActivityOptionsCompat.makeSceneTransitionAnimation(this,  fab,  fab.transitionName )
@@ -63,7 +65,7 @@ class ListOfItemsActivity : AppCompatActivity() {
 
     }
 
-    //THis is back button function to return the previous page
+    //This is the back button function to return to the previous page.
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         return when (item.itemId) {
@@ -76,7 +78,7 @@ class ListOfItemsActivity : AppCompatActivity() {
         }
     }
 
-    // This scroll listener function to control the scroll and floating action Button
+    // This scroll listener function controls the scroll and floating action button size
     private fun scrollListener(prodRecyclerView: RecyclerView, fab: ExtendedFloatingActionButton) {
 
         prodRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -111,7 +113,7 @@ class ListOfItemsActivity : AppCompatActivity() {
 
     }
 
-    //This is animation and transition function,
+    //This is animation and transition function.
     private fun buildTransitions(): MaterialContainerTransform {
         return MaterialContainerTransform().apply {
             addTarget(R.id.list_item_container)

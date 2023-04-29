@@ -14,7 +14,7 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 
 
 /**
- * This is page is show list of the expire date with total of items of the same date expire.
+ * This page shows a list of expiry dates along with the total number of items expiring on each date.
  */
 class PendingExpireFragment : Fragment() {
 
@@ -27,9 +27,10 @@ class PendingExpireFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_pending_expire, container, false)
 
-        //Floating Action Button onClick function.
         val fab = view.findViewById<ExtendedFloatingActionButton>(R.id.floating_action)
 
+        // The click listener for this floating action button will navigate
+        // the user to the page for adding a new item when the button is clicked.
         fab.setOnClickListener {
             val intent = Intent(requireContext(), AddItemActivity::class.java)
             val option = ActivityOptionsCompat.makeSceneTransitionAnimation(requireActivity(),  fab,  fab.transitionName )
@@ -39,7 +40,7 @@ class PendingExpireFragment : Fragment() {
         val jsonDataManager = JsonDataManager(requireContext())
         jsonDataManager.initDateHolder()
 
-        //This is output the display of list expire date with total items.
+        //This is the output displaying the list of expiration dates along with the total number of items.
         val prodRecyclerView = view.findViewById<RecyclerView>(R.id.PendingExpireTotalItemRecyclerView)
         prodRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
@@ -50,9 +51,9 @@ class PendingExpireFragment : Fragment() {
         }
 
 
-        //Floating action button
-        //when user scroll down then button will shrink.
-        //Scroll up then button will extend.
+        //Floating action button:
+        // When the user scrolls down, the button will shrink,
+        // and when they scroll up, it will extend
         prodRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -86,7 +87,7 @@ class PendingExpireFragment : Fragment() {
         return view
     }
 
-    //This is update the display with the latest data.
+    //This  function is to update the display with the latest data.
     override fun onResume() {
         super.onResume()
         adapter.setPendingExpireTotalItems(ItemDataHolder.groupOfSameExpireDate)

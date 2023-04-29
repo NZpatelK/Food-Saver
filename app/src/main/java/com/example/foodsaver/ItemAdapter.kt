@@ -12,7 +12,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 /**
- * This Adapter class to control the view of list of item page.
+ * This Adapter class controls the view of the list of items page.
  */
 class ItemAdapter (private var itemList: List<Item>) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>(){
 
@@ -37,19 +37,19 @@ class ItemAdapter (private var itemList: List<Item>) : RecyclerView.Adapter<Item
 
         holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context, R.anim.scale_up))
 
-        //THis is delete button to delete the item from the list.
+        //This is the delete button used to remove an item from the list.
         holder.delete.setOnClickListener {
             val jsonDataManager = JsonDataManager(holder.itemView.context)
             val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
 
             val key = LocalDate.parse(name.expireDate, formatter) // key to update
-            jsonDataManager.deleteTheItem(position, this, key)// delete the item from data holder
+            jsonDataManager.deleteTheItem(position, this, key)// Delete the item from the data holder.
 
             itemList = ItemDataHolder.groupOfSameExpireDate[key]!!
 
             /**
-             * When an item is deleted, the list of items needs to be updated in order to
-             * assist the delete function in deleting the correct item and avoid deleting the wrong one.
+             * When an item is deleted, the list of items
+             * should be updated to ensure that the correct item is deleted and to prevent deleting the wrong one.
              */
             for (i in position until itemList.size) {
                 notifyItemChanged(i)

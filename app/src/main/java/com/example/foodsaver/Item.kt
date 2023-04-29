@@ -4,7 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 
 /**
- * This is Item Modal/Entity.
+ * This is a data class for Item Model/Entity.
  */
 data class Item(
     val id: String,

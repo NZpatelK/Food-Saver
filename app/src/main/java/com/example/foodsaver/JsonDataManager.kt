@@ -6,13 +6,13 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 /**
- * This class is to setup the access the data from the local json file to fetch the data
- * and save into data holder.
+ * This class is designed to set up access to data from a local JSON file,
+ * fetch the data, and save it into a data holder.
  */
 class JsonDataManager (private val context: Context) {
 
     /**
-     * This init function to get data from the local json file and add into the database.
+     * This init function retrieves data from a local JSON file and adds it to the database.
      */
     fun initDateHolder() {
 

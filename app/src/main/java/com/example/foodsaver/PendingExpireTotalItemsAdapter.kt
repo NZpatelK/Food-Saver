@@ -16,7 +16,8 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 /**
- * Adapter Class for Controlling View of List of Pending Expiry Dates with Total Items Expiring on the Same Date Page
+ * Adapter class for controlling the view of a list of pending
+ * expiry dates with the total number of items expiring on the same date page.
  */
 class PendingExpireTotalItemsAdapter(private var pendingExpireTotalItemsList: Map<LocalDate, List<Item>>) : RecyclerView.Adapter<PendingExpireTotalItemsAdapter.PendingExpireTotalItemsHolder> () {
     class PendingExpireTotalItemsHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -50,8 +51,9 @@ class PendingExpireTotalItemsAdapter(private var pendingExpireTotalItemsList: Ma
         holder.outputDate.text = key.format(formatter)
         holder.totalItems.text = pendingExpireTotalItemsList[key]?.size.toString()
 
-        //This is show colour of the card to alert the user that items will expire very soon.
-        //This code is temporary, and it will change with the actual date. Right now, it uses an array index for demonstration purposes only.
+        //This shows the color of the card to alert the user that the items will expire very soon.
+        // This code is temporary and will be changed with the actual date. Right now,
+        // it uses an array index for demonstration purposes only.
         when (position) {
             0 -> {
                 holder.cardView.setBackgroundResource(R.drawable.alert_rounded_cardview)
@@ -66,7 +68,7 @@ class PendingExpireTotalItemsAdapter(private var pendingExpireTotalItemsList: Ma
 
         holder.cardView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context, R.anim.scale_up))
 
-        // This is click listener when user click on the specific expire date to open a new page show the list of items that expire on the same date.
+        // This is a click listener. When the user clicks on a specific expiration date, a new page opens to show the list of items that expire on the same date.
         holder.cardView.setOnClickListener {
 
             val intent = Intent(holder.itemView.context, ListOfItemsActivity::class.java)
